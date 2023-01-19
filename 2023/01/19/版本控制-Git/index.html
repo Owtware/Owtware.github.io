@@ -24,7 +24,7 @@
 <meta property="og:description" content="clone项目及其子项目1git clone --recursive https:&#x2F;&#x2F;github.com&#x2F;imtianx&#x2F;MainProject.git  GItmodule123git submodule initgit submodule updategit submodule update --init --recursive  回退远程分支至某commitid123git reset -">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-18T16:54:09.932Z">
-<meta property="article:modified_time" content="2023-01-19T07:20:00.887Z">
+<meta property="article:modified_time" content="2023-01-19T07:40:26.231Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.1k 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          9 分钟
+          10 分钟
         
       </span>
     
@@ -301,6 +301,10 @@
 <h4 id="合并当前修改到某次commit"><a href="#合并当前修改到某次commit" class="headerlink" title="合并当前修改到某次commit"></a>合并当前修改到某次commit</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs git">git checkout -b rebase_tmp  //创临时分支用于rebase<br>git stash   //暂存本地修改<br>git rebase -i f744c32^   //移动head到要合并的commit的父提交处<br>找到需要合并的commit, 将行首的pick改成edit, 按esc, 输入:wq退出<br>git stash pop<br>git add .<br>git commit --amend<br>git rebase --continue<br></code></pre></td></tr></table></figure>
 
 <h4 id="将本地项目推到远程空仓库"><a href="#将本地项目推到远程空仓库" class="headerlink" title="将本地项目推到远程空仓库"></a>将本地项目推到远程空仓库</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs git">git init<br>git add .<br>git commit -m &#x27;init&#x27;<br>git remote add origin git@git.woa.com:qcloud_middleware/apigw/compliance.git<br>git pull origin master --allow-unrelated-histories<br>git push -u origin master <br></code></pre></td></tr></table></figure>
+
+<h4 id="取消远程仓库地址关联"><a href="#取消远程仓库地址关联" class="headerlink" title="取消远程仓库地址关联"></a>取消远程仓库地址关联</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote <span class="hljs-built_in">rm</span> origin<br></code></pre></td></tr></table></figure>
+
+<h4 id="重新关联远程仓库地址"><a href="#重新关联远程仓库地址" class="headerlink" title="重新关联远程仓库地址"></a>重新关联远程仓库地址</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">git remote add origin https://github.com/developers-youcong/Metronic_Template.git<br></code></pre></td></tr></table></figure>
                 
               </div>
             
