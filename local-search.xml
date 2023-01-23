@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>Bash脚本</title>
+    <link href="/2023/01/22/Bash%E8%84%9A%E6%9C%AC/"/>
+    <url>/2023/01/22/Bash%E8%84%9A%E6%9C%AC/</url>
+    
+    <content type="html"><![CDATA[<h4 id="输出数据库数据到文本"><a href="#输出数据库数据到文本" class="headerlink" title="输出数据库数据到文本"></a>输出数据库数据到文本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">:&gt; old-subuin-list <br><br>bash mysql-hk.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>bash mysql-gz.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>bash mysql-sh.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br>bash mysql-bj.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>sed -ri <span class="hljs-string">&#x27;/^\s*$/d&#x27;</span> old-subuin-list<br></code></pre></td></tr></table></figure><h4 id="mysql-bj-sh脚本示例"><a href="#mysql-bj-sh脚本示例" class="headerlink" title="mysql-bj.sh脚本示例"></a>mysql-bj.sh脚本示例</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql -h11.15.126.6 -uapigw -p<span class="hljs-string">&#x27;ap@890&#x27;</span> -Dnig<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>网络抓包</title>
     <link href="/2023/01/19/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/"/>
     <url>/2023/01/19/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/</url>
