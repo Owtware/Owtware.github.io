@@ -16,21 +16,21 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="输出数据库数据到文本123456789101112131415161718:&gt; old-subuin-list bash mysql-hk.sh &gt;&gt;old-subuin-list &lt;&lt;EOFselect zone as &amp;#x27;&amp;#x27;, uin as &amp;#x27;&amp;#x27;, sub_account_uin  as &amp;#x27;&amp;#x27;,app_id">
+    <meta name="description" content="go vendor依赖处理123456删除 go.sum&#x2F;go.modgo mod init 项目名go mod tidygo mod vendorgo get -v -u github.com&#x2F;tencentcloud&#x2F;tencentcloud-sdk-go&#x2F;tencentcloud&#x2F;common &#x2F;&#x2F;拉取新添加的依赖到本地go mod download">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bash脚本">
-<meta property="og:url" content="http://example.com/2023/01/22/Bash%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:title" content="go 依赖编译问题">
+<meta property="og:url" content="http://example.com/2023/01/31/Go-%E4%BE%9D%E8%B5%96%E7%BC%96%E8%AF%91%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="惊蛰">
-<meta property="og:description" content="输出数据库数据到文本123456789101112131415161718:&gt; old-subuin-list bash mysql-hk.sh &gt;&gt;old-subuin-list &lt;&lt;EOFselect zone as &amp;#x27;&amp;#x27;, uin as &amp;#x27;&amp;#x27;, sub_account_uin  as &amp;#x27;&amp;#x27;,app_id">
+<meta property="og:description" content="go vendor依赖处理123456删除 go.sum&#x2F;go.modgo mod init 项目名go mod tidygo mod vendorgo get -v -u github.com&#x2F;tencentcloud&#x2F;tencentcloud-sdk-go&#x2F;tencentcloud&#x2F;common &#x2F;&#x2F;拉取新添加的依赖到本地go mod download">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-22T14:26:09.935Z">
-<meta property="article:modified_time" content="2023-01-22T14:50:51.974Z">
+<meta property="article:published_time" content="2023-01-31T14:55:16.640Z">
+<meta property="article:modified_time" content="2023-01-31T14:56:36.128Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>Bash脚本 - 惊蛰</title>
+  <title>go 依赖编译问题 - 惊蛰</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +196,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Bash脚本"></span>
+            <span id="subtitle" data-typed-text="go 依赖编译问题"></span>
           
         </div>
 
@@ -207,8 +207,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-22 22:26" pubdate>
-          2023年1月22日 晚上
+        <time datetime="2023-01-31 22:55" pubdate>
+          2023年1月31日 晚上
         </time>
       </span>
     
@@ -219,7 +219,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          163 字
         
       </span>
     
@@ -230,7 +230,7 @@
         
         
         
-          11 分钟
+          2 分钟
         
       </span>
     
@@ -268,14 +268,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Bash脚本</h1>
+            <h1 style="display: none">go 依赖编译问题</h1>
             
             
               <div class="markdown-body">
                 
-                <h4 id="输出数据库数据到文本"><a href="#输出数据库数据到文本" class="headerlink" title="输出数据库数据到文本"></a>输出数据库数据到文本</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">:&gt; old-subuin-list <br><br>bash mysql-hk.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>bash mysql-gz.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>bash mysql-sh.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br>bash mysql-bj.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>sed -ri <span class="hljs-string">&#x27;/^\s*$/d&#x27;</span> old-subuin-list<br></code></pre></td></tr></table></figure>
-
-<h4 id="mysql-bj-sh脚本示例"><a href="#mysql-bj-sh脚本示例" class="headerlink" title="mysql-bj.sh脚本示例"></a>mysql-bj.sh脚本示例</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql -h11.15.126.6 -uapigw -p<span class="hljs-string">&#x27;ap@890&#x27;</span> -Dnig<br></code></pre></td></tr></table></figure>
+                <h3 id="go-vendor依赖处理"><a href="#go-vendor依赖处理" class="headerlink" title="go vendor依赖处理"></a>go vendor依赖处理</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">删除 go.sum/go.mod<br>go mod init 项目名<br>go mod tidy<br>go mod vendor<br>go get -v -u github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common //拉取新添加的依赖到本地<br>go mod download<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -292,8 +290,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Bash脚本</div>
-      <div>http://example.com/2023/01/22/Bash脚本/</div>
+      <div>go 依赖编译问题</div>
+      <div>http://example.com/2023/01/31/Go-依赖编译问题/</div>
     </div>
     <div class="license-meta">
       
@@ -305,7 +303,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月22日</div>
+          <div>2023年1月31日</div>
         </div>
       
       
@@ -337,18 +335,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/26/%E7%AE%97%E6%B3%95%E7%B2%BE%E8%A7%A3/" title="算法精解">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">算法精解</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/19/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/" title="网络抓包">
-                        <span class="hidden-mobile">网络抓包</span>
+                      <a href="/2023/01/26/%E7%AE%97%E6%B3%95%E7%B2%BE%E8%A7%A3/" title="算法精解">
+                        <span class="hidden-mobile">算法精解</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
