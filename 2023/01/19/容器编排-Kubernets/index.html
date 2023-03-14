@@ -24,8 +24,9 @@
 <meta property="og:description" content="删除pod123kubectl delete pod cloud-api-manag-6469989887-tw9rk  &#x2F;&#x2F;删除pod    进入pod123kubectl exec  tools-qci-operator-76d898686-rskmn -ntce -it bash    修改pod配置123kubectl edit deployment apigw-v3   -n carwy">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-19T07:01:28.745Z">
-<meta property="article:modified_time" content="2023-01-19T07:04:19.024Z">
+<meta property="article:modified_time" content="2023-02-19T13:05:09.590Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="容器">
 <meta name="twitter:card" content="summary_large_image">
   
   
@@ -219,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          295 字
+          394 字
         
       </span>
     
@@ -230,7 +231,7 @@
         
         
         
-          3 分钟
+          4 分钟
         
       </span>
     
@@ -291,6 +292,7 @@
 
 <h4 id="查看ns和ip"><a href="#查看ns和ip" class="headerlink" title="查看ns和ip"></a>查看ns和ip</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br>kubectl get svc -n carwynma     //查看namespace的状态和upstream的ip<br><br></code></pre></td></tr></table></figure>
 
+<h4 id="拷贝pod文到本地"><a href="#拷贝pod文到本地" class="headerlink" title="拷贝pod文到本地"></a>拷贝pod文到本地</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">kubectl <span class="hljs-built_in">cp</span> -n cluster-5ffjdk -c apigw-ld cluster-5ffjdk:usr/local/services/test.pacp ./test.pacp<br></code></pre></td></tr></table></figure>
 
 
 
@@ -301,6 +303,34 @@
             <div>
               <div class="post-metas my-3">
   
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AE%B9%E5%99%A8/" class="category-chain-item">容器</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%AE%B9%E5%99%A8/">#容器</a>
+      
+    </div>
   
 </div>
 
