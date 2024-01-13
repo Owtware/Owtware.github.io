@@ -16,22 +16,24 @@
   <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1. 输出数据库数据到文本123456789101112131415161718:&gt; old-subuin-list bash mysql-hk.sh &gt;&gt;old-subuin-list &lt;&lt;EOFselect zone as &amp;#x27;&amp;#x27;, uin as &amp;#x27;&amp;#x27;, sub_account_uin  as &amp;#x27;&amp;#x27;,app">
+    <meta name="description" content="1. 事务的概念 事务：把多条语句作为一个整体进行操作的功能;事务可以确保事务范围内的所有操作都可以全部成功或者失败 数据库事务具有AICD这四个特性 1234A:Atomic,原子性，将所有sql操作作为原子工作单元执行，要么都执行，要么都不执行I:Isolation,隔离性，如果有多个事务并发执行，每个事务作出的修改必须与其他事务隔离C:Consistent,一致性，事务完成后，所有数据的状态">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bash脚本">
-<meta property="og:url" content="http://example.com/2023/01/22/Bash%E8%84%9A%E6%9C%AC/index.html">
+<meta property="og:title" content="事务">
+<meta property="og:url" content="http://example.com/2024/01/11/%E4%BA%8B%E5%8A%A1/index.html">
 <meta property="og:site_name" content="惊蛰">
-<meta property="og:description" content="1. 输出数据库数据到文本123456789101112131415161718:&gt; old-subuin-list bash mysql-hk.sh &gt;&gt;old-subuin-list &lt;&lt;EOFselect zone as &amp;#x27;&amp;#x27;, uin as &amp;#x27;&amp;#x27;, sub_account_uin  as &amp;#x27;&amp;#x27;,app">
+<meta property="og:description" content="1. 事务的概念 事务：把多条语句作为一个整体进行操作的功能;事务可以确保事务范围内的所有操作都可以全部成功或者失败 数据库事务具有AICD这四个特性 1234A:Atomic,原子性，将所有sql操作作为原子工作单元执行，要么都执行，要么都不执行I:Isolation,隔离性，如果有多个事务并发执行，每个事务作出的修改必须与其他事务隔离C:Consistent,一致性，事务完成后，所有数据的状态">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-22T14:26:09.935Z">
-<meta property="article:modified_time" content="2023-03-29T14:13:53.296Z">
+<meta property="og:image" content="http://example.com/2024/01/11/%E4%BA%8B%E5%8A%A1/img_1.png">
+<meta property="article:published_time" content="2024-01-11T15:02:38.599Z">
+<meta property="article:modified_time" content="2024-01-13T05:37:50.047Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="bash">
+<meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2024/01/11/%E4%BA%8B%E5%8A%A1/img_1.png">
   
   
   
-  <title>Bash脚本 - 惊蛰</title>
+  <title>事务 - 惊蛰</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +199,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Bash脚本"></span>
+            <span id="subtitle" data-typed-text="事务"></span>
           
         </div>
 
@@ -208,8 +210,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-01-22 22:26" pubdate>
-          2023年1月22日 晚上
+        <time datetime="2024-01-11 23:02" pubdate>
+          2024年1月11日 晚上
         </time>
       </span>
     
@@ -220,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          875 字
         
       </span>
     
@@ -231,7 +233,7 @@
         
         
         
-          20 分钟
+          8 分钟
         
       </span>
     
@@ -269,20 +271,21 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Bash脚本</h1>
+            <h1 style="display: none">事务</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="1-输出数据库数据到文本"><a href="#1-输出数据库数据到文本" class="headerlink" title="1. 输出数据库数据到文本"></a>1. 输出数据库数据到文本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs bash">:&gt; old-subuin-list <br><br>bash mysql-hk.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>bash mysql-gz.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>bash mysql-sh.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br>bash mysql-bj.sh &gt;&gt;old-subuin-list &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">select zone as &#x27;&#x27;, uin as &#x27;&#x27;, sub_account_uin  as &#x27;&#x27;,app_id as &#x27;&#x27; from cn_apigw as b, (select id  from cn_apigw where status=&quot;Running&quot; group by uin, app_id , id, sub_account_uin order by uin) as a where a.id = b.id;</span><br><span class="hljs-string">EOF</span><br><br>sed -ri <span class="hljs-string">&#x27;/^\s*$/d&#x27;</span> old-subuin-list<br></code></pre></td></tr></table></figure>
+                <h2 id="1-事务的概念"><a href="#1-事务的概念" class="headerlink" title="1. 事务的概念"></a>1. 事务的概念</h2><p> 事务：把多条语句作为一个整体进行操作的功能;事务可以确保事务范围内的所有操作都可以全部成功或者失败</p>
+<p>数据库事务具有AICD这四个特性</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">A:Atomic,原子性，将所有sql操作作为原子工作单元执行，要么都执行，要么都不执行<br>I:Isolation,隔离性，如果有多个事务并发执行，每个事务作出的修改必须与其他事务隔离<br>C:Consistent,一致性，事务完成后，所有数据的状态都是一致的 如：a减少了<span class="hljs-number">100</span>，b必加上<span class="hljs-number">100</span>;<br>D:Duration,持久性，即事务完成后，对数据发库数据的修改被持久存储<br></code></pre></td></tr></table></figure>
+<p>隔离级别</p>
+<p>对于两个并发的事务，如果涉及到操作同一条记录时，可能造成数据不一致的结果，包括脏读，不可重复读，幻读等；因此设计了隔离级别来帮我们解决这类问题</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">read uncommitted  脏读 不可重复读 幻读<br>read commited     不可重复读  幻读     <br>repeatable read   幻读<br>serializable<br></code></pre></td></tr></table></figure>
 
-<h3 id="mysql-bj-sh脚本示例"><a href="#mysql-bj-sh脚本示例" class="headerlink" title="mysql-bj.sh脚本示例"></a>mysql-bj.sh脚本示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">mysql -h11.15.126.6 -uapigw -p<span class="hljs-string">&#x27;ap@890&#x27;</span> -Dnig<br></code></pre></td></tr></table></figure>
-
-<h2 id="2-交互式数据库脚本"><a href="#2-交互式数据库脚本" class="headerlink" title="2. 交互式数据库脚本"></a>2. 交互式数据库脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><code class="hljs bash"><br><span class="hljs-comment">#!bin/bash</span><br><br><span class="hljs-built_in">read</span> -p <span class="hljs-string">&quot;May I ask your rm instance_id: &quot;</span> gateway_id<br><br><span class="hljs-built_in">read</span> -p  <span class="hljs-string">&quot;are you sure to rm <span class="hljs-variable">$gateway_id</span> ?[y/n]&quot;</span> input<br><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$input</span><br><br><span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$input</span> = <span class="hljs-string">&quot;y&quot;</span> ]];<span class="hljs-keyword">then</span><br><br>  exist=$(<span class="hljs-built_in">source</span> ./mysql-hk.sh <span class="hljs-string">&quot;SELECT 1  FROM cn_apigw  WHERE gateway_id=&#x27;<span class="hljs-variable">$gateway_id</span>&#x27;&quot;</span> | awk <span class="hljs-string">&#x27;NR ==2 &#123;print $1&#125;&#x27;</span>)<br><br>  <span class="hljs-built_in">echo</span> <span class="hljs-variable">$exist</span><br><br>  <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$exist</span> = 1 ]];<span class="hljs-keyword">then</span><br><br>     <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;hk&quot;</span><br><br>     <span class="hljs-built_in">read</span> -p  <span class="hljs-string">&quot;are you sure to rm <span class="hljs-variable">$gateway_id</span> ?[y/n]&quot;</span> input<br><br>     <span class="hljs-keyword">if</span> [[ <span class="hljs-variable">$input</span> = <span class="hljs-string">&quot;y&quot;</span> ]];<span class="hljs-keyword">then</span><br><br>       result=$(<span class="hljs-built_in">source</span> ./mysql-hk.sh <span class="hljs-string">&quot;select zone as &#x27;&#x27;, uin as &#x27;&#x27;,sub_account_uin as &#x27;&#x27;,app_id as &#x27;&#x27;,gateway_id as &#x27;&#x27; from cn_apigw where gateway_id=&quot;</span><span class="hljs-variable">$gateway_id</span><span class="hljs-string">&quot;  order by uin; delete from cn_apigw where gateway_id=&quot;</span><span class="hljs-variable">$gateway_id</span><span class="hljs-string">&quot;&quot;</span>)<br><br>       <span class="hljs-built_in">echo</span> <span class="hljs-variable">$result</span><br><br>     <span class="hljs-keyword">else</span><br><br>       <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Cancelled rm&quot;</span><br><br>     <span class="hljs-keyword">fi</span><br><br>  <span class="hljs-keyword">else</span><br><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;hk does not exist <span class="hljs-variable">$gateway_id</span>&quot;</span><br><br>  <span class="hljs-keyword">fi</span><br><br><span class="hljs-keyword">else</span><br><br>  <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Cancelled rm&quot;</span><br><br><span class="hljs-keyword">fi</span><br><br><span class="hljs-built_in">exit</span> 0<br><br></code></pre></td></tr></table></figure>
-
-<h3 id="mysql-hk-sh脚本示例"><a href="#mysql-hk-sh脚本示例" class="headerlink" title="mysql-hk.sh脚本示例"></a>mysql-hk.sh脚本示例</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#!bin/bash</span><br>mysql -h127.0.0.1  -uroot -p<span class="hljs-string">&#x27;password&#x27;</span> -Dcn &lt;&lt;<span class="hljs-string">EOF</span><br><span class="hljs-string">$1</span><br><span class="hljs-string">EOF</span><br></code></pre></td></tr></table></figure>
-
-<h2 id="3-bash脚本中使用变量"><a href="#3-bash脚本中使用变量" class="headerlink" title="3. bash脚本中使用变量"></a>3. bash脚本中使用变量</h2><p>```bash</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">脏读: 一个事务读取到另一个事务未提交的数据，如果另一个事务回滚，这个数据就是脏数据<br>不可重复读：一个事务多次读取一条数据，如果另一个事务在多次读之间更改了这条数据并提交，这条数据多次读到的数据就是不一致的<br>幻读：一个事务在多次读取一条不存在的数据之间，另一个事务增删了这条数据，当这条事务更新时导致可能会读到不存在的数据<br></code></pre></td></tr></table></figure>
+<h3 id="Transcation"><a href="#Transcation" class="headerlink" title="@Transcation"></a>@Transcation</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">@Transactional注解默认使用事务传播特性是REQUIRED<br>REQUIRED：如果当前存在事务，则加入这个事务；没有则新建一个<br>REQUIRES_NEW：创建一个新事务，如果当前有事务，暂停当前的事务<br>SUPPORTS：如果当前存在事务，则加入这个事务；如果没有则不使用事务<br>MANDATORY：如果当前存在事务，则加入这个事务；如果当前没有事务，则抛出异常<br>NOT_SUPPORTED：不使用事务，如果当前存在事务，则暂停当前的事务<br>NEVER：不使用事务，如果当前存在事务，则抛出异常<br>NESTED：创建一个嵌套事务，如果当前没有事务，则等同于REQUIRED<br></code></pre></td></tr></table></figure>
+<p>常用的配置参数<br><img src="img_1.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -301,7 +304,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/bash/" class="category-chain-item">bash</a>
+  <a href="/categories/java/" class="category-chain-item">java</a>
   
   
 
@@ -316,7 +319,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/bash/">#bash</a>
+        <a href="/tags/Java/">#Java</a>
       
     </div>
   
@@ -328,8 +331,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Bash脚本</div>
-      <div>http://example.com/2023/01/22/Bash脚本/</div>
+      <div>事务</div>
+      <div>http://example.com/2024/01/11/事务/</div>
     </div>
     <div class="license-meta">
       
@@ -341,7 +344,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年1月22日</div>
+          <div>2024年1月11日</div>
         </div>
       
       
@@ -373,18 +376,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/01/26/%E7%AE%97%E6%B3%95%E7%B2%BE%E8%A7%A3/" title="算法精解">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">算法精解</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/01/19/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/" title="网络抓包">
-                        <span class="hidden-mobile">网络抓包</span>
+                      <a href="/2023/03/14/Java%E5%AE%9A%E6%97%B6%E4%BB%BB%E5%8A%A1/" title="Java定时任务">
+                        <span class="hidden-mobile">Java定时任务</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
